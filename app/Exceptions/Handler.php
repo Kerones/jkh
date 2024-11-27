@@ -41,8 +41,19 @@ class Handler extends ExceptionHandler
      */
     public function register(): void
     {
-        $this->reportable(function (Throwable $e) {
-            //
+        $this->renderable(function (\Illuminate\Auth\AuthenticationException $e, $request) {
+            if ($request->is('api/*')) {
+                return response()->json([
+                    'message' => 'Не авторизован'
+                ], 401, options: JSON_UNESCAPED_UNICODE);
+            }
+        });
+        $this->renderable(function (Throwable $e, $request) {
+            if ($request->is('api/*')) {
+                return response()->json([
+                    'message' => 'Записи не найдены'
+                ], 404, options: JSON_UNESCAPED_UNICODE);
+            }
         });
     }
 }

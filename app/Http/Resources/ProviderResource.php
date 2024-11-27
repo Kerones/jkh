@@ -17,7 +17,7 @@ class ProviderResource extends JsonResource
         return [
             'КодКонтрагента_ID' => $this->КодКонтрагента_ID,
             'Название' => $this->Название,
-            'РеестрыКонтрагента' => new RegistryResource($this->registrys)
+            'РеестрыКонтрагента' => new RegistryResource($this->registries)
         ];
     }
 }

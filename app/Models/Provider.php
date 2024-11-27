@@ -11,7 +11,8 @@ class Provider extends Model
 
     protected $table = 'справочники.Контрагенты';
 
-    public function registrys() {
+    public function registries()
+    {
         return $this->hasMany(Registry::class, 'КодКонтрагента_IDX', 'КодКонтрагента_ID');
     }
 }

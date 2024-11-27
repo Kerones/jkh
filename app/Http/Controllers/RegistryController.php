@@ -13,9 +13,9 @@ class RegistryController extends Controller
      */
     public function index()
     {
-        $equipment = Registry::all();
-        if ($equipment->count() > 0) {
-            return RegistryResource::collection($equipment);
+        $registries = Registry::all();
+        if ($registries->count() > 0) {
+            return RegistryResource::collection($registries);
         } else {
             return response()->json(['message' => 'No records available'], 200);
         }

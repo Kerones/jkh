@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\GimmeController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentTypeController;
@@ -21,15 +24,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('token', [AuthController::class, 'token']);
+
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
 Route::apiResource('payments', PaymentController::class);
 Route::apiResource('payment-types', PaymentTypeController::class);
-Route::apiResource('providers', ProviderController::class);
-Route::apiResource('registrys', RegistryController::class);
+Route::middleware('auth:sanctum')->apiResource('providers', ProviderController::class);
+Route::apiResource('registries', RegistryController::class);
 Route::apiResource('registry-records', RegistryRecordController::class);
 Route::apiResource('service-types', ServiceTypeController::class);
 
-Route::apiResource('gimme', GimmeController::class);
+Route::middleware('auth:sanctum')->apiResource('gimme', GimmeController::class);

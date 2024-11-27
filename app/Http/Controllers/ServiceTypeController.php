@@ -13,9 +13,9 @@ class ServiceTypeController extends Controller
      */
     public function index()
     {
-        $equipment = ServiceType::all();
-        if ($equipment->count() > 0) {
-            return ServiceTypeResource::collection($equipment);
+        $serviceTypes = ServiceType::all();
+        if ($serviceTypes->count() > 0) {
+            return ServiceTypeResource::collection($serviceTypes);
         } else {
             return response()->json(['message' => 'No records available'], 200);
         }

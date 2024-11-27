@@ -14,6 +14,22 @@ class PaymentResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        if (isset($this->КодОплаты_ID)) {
+            return [
+                'КодОплаты_ID' => $this->КодОплаты_ID,
+                'НомерЛицевого' => $this->НомерЛицевого,
+                'СуммаОплаты' => $this->СуммаОплаты,
+                'ЭтоВозвратОплаты_IDX' => $this->ЭтоВозвратОплаты_IDX,
+                'КодЗаписиРеестра_IDX' => $this->КодЗаписиРеестра_IDX,
+                'ОплатаЗакрыта' => $this->ОплатаЗакрыта
+            ];
+        }
+        return [
+            'НомерЛицевого' => $this->НомерЛицевого,
+            'СуммаОплаты' => $this->СуммаОплаты,
+            'ЭтоВозвратОплаты_IDX' => $this->ЭтоВозвратОплаты_IDX,
+            'КодЗаписиРеестра_IDX' => $this->КодЗаписиРеестра_IDX,
+            'ОплатаЗакрыта' => $this->ОплатаЗакрыта
+        ];
     }
 }

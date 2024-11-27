@@ -13,10 +13,9 @@ class ProviderController extends Controller
      */
     public function index()
     {
-        $equipment = Provider::all();
-        // dd($equipment->first()->registrys);
-        if ($equipment->count() > 0) {
-            return ProviderResource::collection($equipment);
+        $providers = Provider::all();
+        if ($providers->count() > 0) {
+            return ProviderResource::collection($providers);
         } else {
             return response()->json(['message' => 'No records available'], 200);
         }

@@ -14,9 +14,9 @@ class PaymentTypeController extends Controller
      */
     public function index()
     {      
-        $equipment = PaymentType::all();
-        if ($equipment->count() > 0) {
-            return PaymentTypeResource::collection($equipment);
+        $paymentTypes = PaymentType::all();
+        if ($paymentTypes->count() > 0) {
+            return PaymentTypeResource::collection($paymentTypes);
         } else {
             return response()->json(['message' => 'No records available'], 200);
         }

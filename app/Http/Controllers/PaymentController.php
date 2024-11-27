@@ -13,9 +13,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
-        $equipment = Payment::all();
-        if ($equipment->count() > 0) {
-            return PaymentResource::collection($equipment);
+        $payments = Payment::all();
+        if ($payments->count() > 0) {
+            return PaymentResource::collection($payments);
         } else {
             return response()->json(['message' => 'No records available'], 200);
         }
